@@ -34,26 +34,21 @@ function calculate(operation, a, b) {
 
   switch(operation) {
     case '*':
-      console.log("multiply");
       previousOperandTextElement.innerHTML = multiply(a, b);
       currentOperandTextElement.innerHTML = '';
       hasBeenCalculated = true;
       break;
     case '/':
-      console.log("divide");
-      console.log(a, b);
       previousOperandTextElement.innerHTML = divide(a, b);
       currentOperandTextElement.innerHTML = '';
       hasBeenCalculated = true;
       break;
     case '+':
-      console.log("add");
       previousOperandTextElement.innerHTML = add(a, b);
       currentOperandTextElement.innerHTML = '';
       hasBeenCalculated = true;
       break;
     case '-':
-      console.log("subtract");
       previousOperandTextElement.innerHTML = subtract(a, b);
       currentOperandTextElement.innerHTML = '';
       hasBeenCalculated = true;
@@ -98,7 +93,7 @@ operationButtons.forEach(button => button.addEventListener('click', (e) => {
   operation = button.innerHTML;
 
   if (previousOperandTextElement.innerHTML.slice(previousOperandTextElement.innerHTML.indexOf(operation)) != prevOperation && previousOperandTextElement.innerHTML != '' && currentOperandTextElement.innerHTML == '' && hasBeenCalculated) {
-    
+
     previousOperandTextElement.innerHTML += operation;
 
   }
@@ -110,20 +105,24 @@ operationButtons.forEach(button => button.addEventListener('click', (e) => {
     calculate(prevOperation, parsePrev, parseCurr);
     previousOperandTextElement.innerHTML += operation;
     hasBeenCalculated = true;
+
   }
 
   if (previousOperand == '') {
+
     previousOperand = currentOperand;
     previousOperandTextElement.innerHTML += previousOperand + operation;
     clearCurrent();
   }
 
   if (previousOperandTextElement.innerHTML.slice(previousOperandTextElement.innerHTML.indexOf(operation)) != prevOperation && previousOperandTextElement.innerHTML != '' && currentOperandTextElement.innerHTML != '') {
+
     parsePrev = parseFloat(previousOperandTextElement.innerHTML.slice(0, previousOperandTextElement.innerHTML.indexOf(operation)));
     parseCurr = parseFloat(currentOperandTextElement.innerHTML)
     console.log(operation, parsePrev, parseCurr);
     calculate(operation, parsePrev,parseCurr);
     hasBeenCalculated = true;
+
   }
   
   clearCurrent();
@@ -138,18 +137,20 @@ equalButton.addEventListener('click', (e) => {
   if (previousOperandTextElement.innerHTML !== '' && currentOperandTextElement.innerHTML !== '' && operation !== undefined) {
 
     let result = calculate(operation, parsePrev, parseCurr);
-    console.log(result);
+
   }
 
   if (previousOperandTextElement.innerHTML !== '' && currentOperandTextElement.innerHTML !== '' && operation !== undefined) {
 
     let result = calculate(operation, parsePrev, parseCurr);
-    console.log(result);
+
   }
   
 });
 
 clearButton.addEventListener('click', (e) => {
+
   clearCurrent();
   clearPrevious();
+  
 });
